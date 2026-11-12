@@ -1,0 +1,58 @@
+def simple_reflex_agent(location, status):
+    if status == "Dirty":
+        return "Suck"
+    elif location == "A":
+        return "Move Right"
+    else:
+        return "Move Left"
+
+def run_simple_reflex():
+    print("SIMPLE REFLEX AGENT")
+    location = "A"
+    environment = {
+        "A": "Dirty",
+        "B": "Dirty"
+    }
+    for step in range(4):
+        status = environment[location]
+        print(f"\nStep {step + 1}")
+        print(f"Location: {location}")
+        print(f"Status: {status}")
+        action = simple_reflex_agent(location, status)
+        print(f"Action: {action}")
+        if action == "Suck":
+            environment[location] = "Clean"
+        elif action == "Move Right":
+            location = "B"
+        elif action == "Move Left":
+            location = "A"
+
+run_simple_reflex()
+
+
+#output
+
+"""
+SIMPLE REFLEX AGENT
+
+Step 1
+Location: A
+Status: Dirty
+Action: Suck
+
+Step 2
+Location: A
+Status: Clean
+Action: Move Right
+
+Step 3
+Location: B
+Status: Dirty
+Action: Suck
+
+Step 4
+Location: B
+Status: Clean
+Action: Move Left
+
+"""
